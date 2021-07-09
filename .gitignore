@@ -1,0 +1,9 @@
+### IntelliJ IDEA ###
+.gradle
+build
+gradle
+.idea
+target
+*.iws
+*.iml
+*.ipr
