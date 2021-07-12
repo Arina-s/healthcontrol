@@ -10,5 +10,8 @@ repositories {
 }
 
 dependencies {
+    implementation 'org.springframework:spring-context:5.3.8'
 
+    implementation 'org.projectlombok:lombok:1.18.20'
+    annotationProcessor 'org.projectlombok:lombok:1.18.20'
 }
