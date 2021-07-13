@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Headaches</title>
+</head>
+<body>
+<tr th:each="headache : ${headaches}">
+    <td th:text="${headache.id}"></td>
+    <td th:text="${headache.date}"></td>
+    <td th:text="${headache.power}"></td>
+    <td th:text="${headache.duration}"></td>
+    <br>
+</tr>
+<a href="/headacheDiary/addHeadache">Add</a>
+</body>
+</html>
