@@ -1,5 +1,6 @@
 package com.arinauniversity.healthcontrol.controller;
 
+import com.arinauniversity.healthcontrol.exceptions.SqlInjectionException;
 import com.arinauniversity.healthcontrol.model.DoctorVisit;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -62,7 +63,10 @@ public class DoctorsVisitsController {
     }
 
     @PostMapping("/addDoctorVisit")
-    public String saveDoctorVisit(DoctorVisit doctorVisit, HttpServletRequest request) {
+    public String saveDoctorVisit(DoctorVisit doctorVisit) {
+        if (doctorVisit.getDescription().toLowerCase().contains("delete")) {
+            throw new SqlInjectionException();
+        }
         doctorsVisits.add(doctorVisit);
         return "redirect:/doctorsVisits";
     }
