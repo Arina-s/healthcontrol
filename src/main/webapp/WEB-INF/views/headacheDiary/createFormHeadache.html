@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <title>Create form headache</title>
@@ -8,7 +8,7 @@
 <form th:method="POST" th:action="@{/headacheDiary/addHeadache}" th:object="${headache}">
     <div>
         <label for="id">Id: </label>
-        <input id="id" type="text" th:field="*{id}">
+        <input id="id" type="text" th:field="*{id}" readonly="readonly">
     </div>
     <div>
         <label for="date">Date: </label>
@@ -21,6 +21,14 @@
     <div>
         <label for="duration">Duration: </label>
         <input id="duration" type="text" th:field="*{duration}">
+    </div>
+    <div>
+        <label for="tablet-name">Tablet: </label>
+        <input id="tablet-name" type="text" th:field="*{tablet.name}">
+    </div>
+    <div>
+        <label for="tablet-count">Tablet: </label>
+        <input id="tablet-count" type="text" th:field="*{tablet.count}">
     </div>
     <input type="submit" value="Add">
 </form>

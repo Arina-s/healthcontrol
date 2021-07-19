@@ -15,12 +15,12 @@ import org.thymeleaf.spring5.view.ThymeleafViewResolver;
 @Configuration
 @ComponentScan("com.arinauniversity.healthcontrol")
 @EnableWebMvc
-public class SpringConfig implements WebMvcConfigurer {
+public class SpringMvcConfig implements WebMvcConfigurer {
 
     private final ApplicationContext applicationContext;
 
     @Autowired
-    public SpringConfig(ApplicationContext applicationContext) {
+    public SpringMvcConfig(ApplicationContext applicationContext) {
         this.applicationContext = applicationContext;
     }
 

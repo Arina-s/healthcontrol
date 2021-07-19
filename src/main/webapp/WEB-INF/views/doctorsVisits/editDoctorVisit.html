@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit visit</title>
+    <style>
+        td {
+            width: 90px;
+        }
+        input {
+            width: 90%;
+        }
+        button {
+            margin-bottom: 4px;
+            width: 76px;
+        }
+        input[type="submit"] {
+            margin-bottom: 4px;
+            width: 76px;
+        }
+    </style>
+</head>
+<body>
+<table border="1" cellpadding="10">
+    <thead>
+    <tr>
+        <td>Id</td>
+        <td>Day</td>
+        <td>month</td>
+        <td>year</td>
+        <td>doctorsSpecialization</td>
+        <td>doctorsName</td>
+        <td>time</td>
+        <td>description</td>
+        <td>Actions</td>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="visit : ${doctorsVisits}">
+        <div th:if="${visit.id} != ${editVisit.id}">
+            <td th:text="${visit.id}"></td>
+            <td th:text="${visit.day}"></td>
+            <td th:text="${visit.month}"></td>
+            <td th:text="${visit.year}"></td>
+            <td th:text="${visit.doctorsSpecialization}"></td>
+            <td th:text="${visit.doctorsName}"></td>
+            <td th:text="${visit.time}"></td>
+            <td th:text="${visit.description}"></td>
+            <td>
+                <a href="#"><button disabled>Edit</button></a>
+                <a href="#"><button disabled>Delete</button></a>
+            </td>
+        </div>
+        <div th:if="${visit.id} == ${editVisit.id}">
+                <form th:method="POST" th:action="@{/doctorsVisits/editDoctorVisit}" th:object="${editVisit}">
+                    <td><input type="text" th:field="*{id}"></td>
+                    <td><input type="text" th:field="*{day}"></td>
+                    <td><input type="text" th:field="*{month}"></td>
+                    <td><input type="text" th:field="*{year}"></td>
+                    <td><input type="text" th:field="*{doctorsSpecialization}"></td>
+                    <td><input type="text" th:field="*{doctorsName}"></td>
+                    <td><input type="text" th:field="*{time}"></td>
+                    <td><input type="text" th:field="*{description}"></td>
+                    <td>
+                        <input type="submit" value="Save">
+                        <input type="submit" value="Delete" disabled>
+                    </td>
+                </form>
+        </div>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>

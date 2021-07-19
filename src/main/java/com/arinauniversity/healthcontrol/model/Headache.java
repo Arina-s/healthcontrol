@@ -8,7 +8,6 @@ import org.springframework.stereotype.Component;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Component
 public class Headache {
 
     private int id;
@@ -16,5 +15,6 @@ public class Headache {
     private int power;
     //in hours
     private int duration;
+    private Tablet tablet;
 
 }
