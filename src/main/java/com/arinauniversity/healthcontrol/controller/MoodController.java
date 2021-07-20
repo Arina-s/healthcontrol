@@ -25,8 +25,7 @@ public class MoodController {
     }
 
     @GetMapping("/addMood")
-    public String getCreateFormMood(Model model) {
-        model.addAttribute("mood", moodService.getNewMood());
+    public String getCreateFormMood(@ModelAttribute("mood") Mood mood) {
         return "moodDiary/createFormMood";
     }
 
