@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Create form headache</title>
+</head>
+<body>
+<form th:method="POST" th:action="@{/headacheDiary/addHeadache}" th:object="${headache}">
+    <div>
+        <label for="id">Id: </label>
+        <input id="id" type="text" th:field="*{id}" readonly="readonly">
+    </div>
+    <div>
+        <label for="date">Date: </label>
+        <input id="date" type="text" th:field="*{date}">
+    </div>
+    <div>
+        <label for="power">Power: </label>
+        <input id="power" type="text" th:field="*{power}">
+    </div>
+    <div>
+        <label for="duration">Duration: </label>
+        <input id="duration" type="text" th:field="*{duration}">
+    </div>
+    <div>
+        <label for="tablet-name">Tablet: </label>
+        <input id="tablet-name" type="text" th:field="*{tablet.name}">
+    </div>
+    <div>
+        <label for="tablet-count">Tablet: </label>
+        <input id="tablet-count" type="text" th:field="*{tablet.count}">
+    </div>
+    <input type="submit" value="Add">
+</form>
+</body>
+</html>

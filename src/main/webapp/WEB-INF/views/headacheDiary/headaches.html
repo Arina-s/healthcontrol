@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Headaches</title>
+</head>
+<body>
+<h2>List headaches</h2>
+<table border="1" cellpadding="10">
+    <thead>
+    <tr>
+        <td>Id</td>
+        <td>Date</td>
+        <td>Power</td>
+        <td>Duration</td>
+        <td>Tablet</td>
+        <td>Count tablets</td>
+        <td>Actions</td>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="headache : ${headaches}">
+        <td th:text="${headache.id}"></td>
+        <td th:text="${headache.date}"></td>
+        <td th:text="${headache.power}"></td>
+        <td th:text="${headache.duration}"></td>
+        <td th:text="${headache.tablet.name}"></td>
+        <td th:text="${headache.tablet.count}"></td>
+        <td>
+            <a th:href="@{'/headacheDiary/deleteHeadache/' + ${headache.id}}">
+
+                <button>Delete</button>
+            </a>
+            <br>
+
+            <a th:href="@{'/headacheDiary/editHeadache/' + ${headache.id}}">
+                <button>Edit</button>
+            </a>
+        </td>
+    </tr>
+    </tbody>
+</table>
+<br>
+<a href="/headacheDiary/addHeadache">
+    <button>Add</button>
+</a>
+</body>
+</html>

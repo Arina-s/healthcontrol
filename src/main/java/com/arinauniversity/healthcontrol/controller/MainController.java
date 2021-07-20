@@ -1,4 +1,4 @@
-package com.arinauniversity.healthcontrol.model;
+package com.arinauniversity.healthcontrol.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -8,7 +8,7 @@ public class MainController {
 
     @GetMapping()
     public String start() {
-        return "start";
+        return "main/start";
     }
 
 }

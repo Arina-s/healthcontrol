@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Create form mood</title>
+  <style>
+    .error {
+      color: darkred;
+    }
+  </style>
+</head>
+<body>
+<form th:method="POST" th:action="@{/moodDiary/addMood}" th:object="${mood}">
+  <div>
+    <label for="id">Id: </label>
+    <input id="id" type="text" th:field="*{id}" readonly="readonly">
+  </div>
+  <div>
+    <label for="date">Date: </label>
+    <input id="date" type="text" th:field="*{date}">
+    <span class="error" th:if="${#fields.hasErrors('date')}" th:errors="*{date}"></span>
+  </div>
+  <div>
+    <label for="estimation">Estimation: </label>
+    <input id="estimation" type="text" th:field="*{estimation}">
+    <span class="error" th:if="${#fields.hasErrors('estimation')}" th:errors="*{estimation}"></span>
+  </div>
+  <input type="submit" value="Add">
+</form>
+</body>
+</html>

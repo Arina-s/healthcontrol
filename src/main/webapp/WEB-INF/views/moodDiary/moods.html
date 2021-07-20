@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Moods</title>
+</head>
+<body>
+<h2>Moods</h2>
+<a href="/moodDiary/addMood">
+    <button>Add</button>
+</a>
+<br>
+<a href="/moodDiary/addRandomMood">
+    <button>Add Random in Past</button>
+</a>
+<br>
+<a href="/moodDiary/addRandomMood?future=true">
+    <button>Add Random in Future</button>
+</a>
+<br>
+<a href="/moodDiary/addEstimation?value=1">
+    <button>Add 1 all</button>
+</a>
+<span> </span>
+<a href="/moodDiary/addEstimation?value=2">
+    <button>Add 2 all</button>
+</a>
+<span> </span>
+<a href="/moodDiary/addEstimation?value=3">
+    <button>Add 3 all</button>
+</a>
+<table border="1" cellpadding="10">
+    <thead>
+    <tr>
+        <td>Id</td>
+        <td>Date</td>
+        <td>Estimation</td>
+        <td>Actions</td>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="mood : ${moods}">
+        <td th:text="${mood.id}"></td>
+        <td th:text="${mood.date}"></td>
+        <td th:text="${mood.estimation}"></td>
+        <td>
+            <a th:href="@{'/moodDiary/deleteMood/' + ${mood.id}}">
+                <button>Delete</button>
+            </a>
+            <br>
+            <a th:href="@{'/moodDiary/editMood/' + ${mood.id}}">
+                <button>Edit</button>
+            </a>
+        </td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>

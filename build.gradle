@@ -11,8 +11,11 @@ repositories {
 }
 
 dependencies {
+    implementation 'org.springframework:spring-web:5.3.8'
     implementation 'org.springframework:spring-webmvc:5.3.8'
     implementation 'org.thymeleaf:thymeleaf-spring5:3.0.12.RELEASE'
+    implementation 'org.hibernate.validator:hibernate-validator:6.2.0.Final'
+    compileOnly 'javax.servlet:javax.servlet-api:4.0.1'
     implementation 'org.projectlombok:lombok:1.18.20'
     annotationProcessor 'org.projectlombok:lombok:1.18.20'
 }
