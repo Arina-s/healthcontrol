@@ -8,8 +8,6 @@ public interface MoodService {
 
     List<Mood> getAllMoods();
 
-    Mood getNewMood();
-
     void saveMood(Mood mood);
 
     Mood getMoodById(int id);

@@ -21,11 +21,6 @@ public class MoodServiceImpl implements MoodService {
     }
 
     @Override
-    public Mood getNewMood() {
-        return moodDao.getNewMood();
-    }
-
-    @Override
     public void saveMood(Mood mood) {
         moodDao.saveMood(mood);
     }
@@ -47,7 +42,7 @@ public class MoodServiceImpl implements MoodService {
 
     @Override
     public void addRandomMood(boolean future) {
-        Mood mood = moodDao.getNewMood();
+        Mood mood = new Mood();
         int day = new Random().nextInt(31);
         int month = new Random().nextInt(12);
         int year = new Random().nextInt(11) + 2010;

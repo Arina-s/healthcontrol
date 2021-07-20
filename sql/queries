@@ -1,0 +1,5 @@
+CREATE TABLE moods (
+    id serial PRIMARY KEY NOT NULL,
+    date varchar(255) NOT NULL,
+    estimation integer NOT NULL
+);
