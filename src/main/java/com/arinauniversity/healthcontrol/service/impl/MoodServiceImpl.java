@@ -1,7 +1,8 @@
-package com.arinauniversity.healthcontrol.service;
+package com.arinauniversity.healthcontrol.service.impl;
 
 import com.arinauniversity.healthcontrol.dao.MoodDao;
 import com.arinauniversity.healthcontrol.model.Mood;
+import com.arinauniversity.healthcontrol.service.MoodService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

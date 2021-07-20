@@ -1,5 +1,6 @@
-package com.arinauniversity.healthcontrol.dao;
+package com.arinauniversity.healthcontrol.dao.impl;
 
+import com.arinauniversity.healthcontrol.dao.MoodDao;
 import com.arinauniversity.healthcontrol.model.Mood;
 import lombok.RequiredArgsConstructor;
 import lombok.SneakyThrows;
