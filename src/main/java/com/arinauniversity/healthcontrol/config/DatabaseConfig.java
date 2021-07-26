@@ -1,7 +1,11 @@
 package com.arinauniversity.healthcontrol.config;
 
+import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.PropertySource;
+import org.springframework.core.env.Environment;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 
@@ -9,22 +13,34 @@ import javax.sql.DataSource;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.util.Objects;
 
 @Configuration
+@PropertySource("classpath:application.properties")
+@RequiredArgsConstructor
 public class DatabaseConfig {
 
-    private static final String POSTGRES_DRIVER = "org.postgresql.Driver";
-    private static final String URL = "jdbc:postgresql://localhost:5433/healthcontrol";
-    private static final String USERNAME = "postgres";
-    private static final String PASSWORD = "123";
+    @Value("${jdbc.driver}")
+    private String driver;
+
+    @Value("${jdbc.url}")
+    private String url;
+
+    @Value("${jdbc.username}")
+    private String username;
+
+    @Value("${jdbc.password}")
+    private String password;
+
+    private final Environment environment;
 
     @Bean
     public DataSource dataSource() {
         DriverManagerDataSource dataSource = new DriverManagerDataSource();
-        dataSource.setDriverClassName(POSTGRES_DRIVER);
-        dataSource.setUrl(URL);
-        dataSource.setUsername(USERNAME);
-        dataSource.setPassword(PASSWORD);
+        dataSource.setDriverClassName(Objects.requireNonNull(environment.getProperty("jdbc.driver")));
+        dataSource.setUrl(environment.getProperty("jdbc.url"));
+        dataSource.setUsername(environment.getProperty("jdbc.username"));
+        dataSource.setPassword(environment.getProperty("jdbc.password"));
         return dataSource;
     }
 
@@ -37,12 +53,12 @@ public class DatabaseConfig {
     public Connection connection() {
         Connection connection = null;
         try {
-            Class.forName("org.postgresql.Driver");
+            Class.forName(driver);
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
         try {
-            connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
+            connection = DriverManager.getConnection(url, username, password);
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
