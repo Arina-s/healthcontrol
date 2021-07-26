@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
+import java.util.List;
+import java.util.Random;
 
 @Controller
 @RequestMapping("/moodDiary")
@@ -67,6 +69,13 @@ public class MoodController {
         int value = Integer.parseInt(httpServletRequest.getParameter("value"));
         moodService.addEstimation(value);
         return "redirect:/moodDiary";
+    }
+
+    @GetMapping("/selectRandom")
+    public String selectRandom() {
+        int[] arrayId = moodService.getIdList();
+        int randomIndex = new Random().nextInt(arrayId.length);
+        return "redirect:/moodDiary/editMood/" + arrayId[randomIndex];
     }
 
 }

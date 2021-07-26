@@ -61,4 +61,9 @@ public class MoodServiceImpl implements MoodService {
         moodDao.addEstimation(value);
     }
 
+    @Override
+    public int[] getIdList() {
+        return getAllMoods().stream().mapToInt(Mood::getId).toArray();
+    }
+
 }

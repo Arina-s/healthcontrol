@@ -3,3 +3,12 @@ CREATE TABLE moods (
     date varchar(255) NOT NULL,
     estimation integer NOT NULL
 );
+
+CREATE TABLE headaches (
+    id serial PRIMARY KEY NOT NULL,
+    date varchar(255) NOT NULL,
+    power integer NOT NULL,
+	duration integer NOT NULL,
+	tablet_name varchar(255),
+	tablet_count integer
+);

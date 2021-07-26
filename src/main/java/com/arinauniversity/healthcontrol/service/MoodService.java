@@ -20,4 +20,5 @@ public interface MoodService {
 
     void addEstimation(int value);
 
+    int[] getIdList();
 }
